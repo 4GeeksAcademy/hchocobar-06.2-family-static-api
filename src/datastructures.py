@@ -12,7 +12,7 @@ class FamilyStructure:
     def __init__(self, last_name):
         self.last_name = last_name
         # Example list of members
-        self._members = [{'id': self._generateId(),
+        self._members = [{'id': 1,
                           'first_name': 'John',
                           'last_name': 'Jackson',
                           'age': 33,
@@ -27,6 +27,7 @@ class FamilyStructure:
                           'last_name': 'Jackson',
                           'age': 5,
                           'lucky_numbers': [1]}]
+    
     # Read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
         return randint(0, 99999999)
@@ -40,8 +41,16 @@ class FamilyStructure:
         pass
 
     def get_member(self, id):
-        # Fill this method and update the return
-        pass
+        # Opción 1: list comprehension
+        result = [member for member in self._members if member["id"] == id]
+        # Opción 2: Standard
+        # result = []
+        # for member in self._members:
+        #    if member["id"] == id:
+        #        result.append(member)
+        # Opción 3: lambda function
+        # result = list(filter(lambda member: member["id"] == id, self._members ))
+        return result
 
     # This method is done, it returns a list with all the family members
     def get_all_members(self):
