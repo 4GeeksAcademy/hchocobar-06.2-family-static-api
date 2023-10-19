@@ -37,6 +37,20 @@ def handle_hello():
     return jsonify(response_body), 200
 
 
+@app.route('/member', methods=['POST'])
+def add_member():
+    request_body = request.json
+    member = {'id': request_body.get('id') or jackson_family._generateId(),
+              'first_name': request_body.get('first_name'),
+              'age': request_body.get('age'),
+              'lucky_numbers': request_body.get('lucky_numbers')}
+    if not all(member.values()):
+        response_body = {"message": "Incorrect values in your request"}
+        return response_body, 400
+    response_body = jackson_family.add_member(member)
+    return jsonify(response_body), 200
+
+
 @app.route('/member/<int:id>', methods=['GET'])
 def get_member_by_id(id):
     member = jackson_family.get_member(id)

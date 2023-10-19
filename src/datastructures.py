@@ -34,7 +34,9 @@ class FamilyStructure:
 
     def add_member(self, member):
         # Fill this method and update the return
-        pass
+        member["last_name"] = self.last_name
+        self._members.append(member)
+        return self._members
 
     def delete_member(self, id):
         # Fill this method and update the return
