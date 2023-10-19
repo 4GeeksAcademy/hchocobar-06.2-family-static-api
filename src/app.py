@@ -61,6 +61,16 @@ def get_member_by_id(id):
     return response_body, 200
 
 
+@app.route('/member/<int:id>', methods=['DELETE'])
+def delete_member(id):
+    done = jackson_family.delete_member(id)
+    if not done:
+        response_body = {"message": "Member not found"} 
+        return response_body, 400
+    response_body = {"done": True} 
+    return response_body, 200
+
+
 # This only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))

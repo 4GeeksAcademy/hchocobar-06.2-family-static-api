@@ -39,9 +39,18 @@ class FamilyStructure:
         return self._members
 
     def delete_member(self, id):
-        # Fill this method and update the return
-        pass
-
+        # Opción 1: list comprehension
+        result = [member for member in self._members if member["id"] != id]
+        # Opción 2: Standard
+        # result = []
+        # for member in self._members:
+        #     if member["id"] != id:
+        #         result.append(member)
+        # Opción 3: lambda function
+        # result =list(filter(lambda member: member["id"] != id, self._members))
+        self._members = result
+        return self._members
+        
     def get_member(self, id):
         # Opción 1: list comprehension
         result = [member for member in self._members if member["id"] == id]
