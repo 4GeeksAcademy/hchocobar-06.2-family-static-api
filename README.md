@@ -56,17 +56,15 @@ Every **member** of the Jackson family must be a dictionary - the equivalent of 
 ```
 The **family** data-structure will be a class with the following structure:
 
-```python
+```py
 class Family:
 
     def __init__(self, last_name):
         self.last_name = last_name
         # example list of members
-        self._members = [{
-            "id": self._generateId(),
-            "first_name": "John",
-            "last_name": last_name
-        }]
+        self._members = [{"id": self._generateId(),
+                          "first_name": "John",
+                          "last_name": last_name}]
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
