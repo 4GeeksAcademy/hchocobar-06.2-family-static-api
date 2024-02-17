@@ -34,12 +34,17 @@ class FamilyStructure:
         return randint(0, 99999999)
 
     def add_member(self, member):
+        # Agrego las claves id y last_name al dict member que recibí
+        member['id'] = self._generate_id()
+        member['last_name'] = self.last_name
+        # Agregar member a la lista self._members
+        self._members.append(member)
         # Fill this method and update the return
-        pass
+        return self._members
 
     def delete_member(self, id):
-        # Fill this method and update the return
-        pass
+        self._members = [item for item in self._members if id != item['id']]
+        return self._members
 
     def get_member(self, id):
         # Recorrer la lista buscando el id, devolver el miembro que hemos encontrado
